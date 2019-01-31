@@ -7,19 +7,20 @@ namespace SistemPed.Entities
 {
     class Order
     {
-        public DateTime Date { get; set; }
+        public DateTime Moment { get; set; }
         public OrderStatus Status { get; set; }
+        public Client Client { get; set; }
         public List<OrderItem> Items { get; set; } = new List<OrderItem>();
-        public List<Client> Clients { get; set; } = new List<Client>();
 
         public Order()
         {
         }
 
-        public Order(DateTime date, OrderStatus status)
+        public Order(DateTime moment, OrderStatus status, Client client)
         {
-            Date = date;
+            Moment = moment;
             Status = status;
+            Client = client;
         }
 
         public void AddItem(OrderItem orderItem)
@@ -30,6 +31,16 @@ namespace SistemPed.Entities
         {
             Items.Remove(orderItem);
         }
+        public double Total()
+        {
+            double sum = 0.0;
+            foreach(OrderItem item in Items)
+            {
+                sum += item.SubTotal();
+            }
+            return sum;
+        }
+
 
     }
 }
