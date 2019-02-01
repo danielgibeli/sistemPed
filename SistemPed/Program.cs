@@ -40,7 +40,7 @@ namespace SistemPed
                 System.Console.Write("Quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
 
-                OrderItem orderItem = new OrderItem(quantity, price);
+                OrderItem orderItem = new OrderItem(quantity, price, product);
                 order.AddItem(orderItem);
             }
             System.Console.WriteLine();

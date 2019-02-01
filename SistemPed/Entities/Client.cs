@@ -8,7 +8,7 @@ namespace SistemPed.Entities
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public DateTime birthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public Client()
         {
@@ -17,7 +17,15 @@ namespace SistemPed.Entities
         {
             Name = name;
             Email = email;
-            this.birthDate = birthDate;
+            this.BirthDate = birthDate;
+        }
+        public override string ToString()
+        {
+            return Name
+                + ", ("
+                + BirthDate.ToString("dd/MM/yyyy") 
+                + ") - " 
+                + Email;
         }
     }
 }
